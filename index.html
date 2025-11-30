@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BakaHatake | AI/ML Developer</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables --- */
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #171717;
+            --accent: #10b981; /* Emerald Green */
+            --accent-hover: #059669;
+            --text-white: #ffffff;
+            --text-gray: #a3a3a3;
+            --border-color: #333333;
+            --nav-glass: rgba(23, 23, 23, 0.7);
+        }
+
+        /* --- Reset & Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        /* --- Layout Utilities --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .text-center { text-align: center; }
+        .text-accent { color: var(--accent); }
+        .text-gray { color: var(--text-gray); }
+        
+        /* Flexbox Utilities */
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .justify-center { justify-content: center; }
+        .gap-2 { gap: 0.5rem; }
+        .gap-4 { gap: 1rem; }
+        .gap-8 { gap: 2rem; }
+
+        /* --- Navigation --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--nav-glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: none; /* Hidden on mobile by default */
+        }
+
+        .nav-links a {
+            margin-left: 32px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu-btn {
+            background: none;
+            border: none;
+            color: var(--text-gray);
+            font-size: 1.25rem;
+            cursor: pointer;
+            display: block;
+        }
+
+        /* Mobile Menu Dropdown */
+        .mobile-menu {
+            display: none;
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 10px 0;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 12px 24px;
+            font-weight: 500;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #222;
+            color: var(--accent);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* Decorative Blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+        .blob-1 { top: 10%; left: 5%; width: 300px; height: 300px; background: var(--accent); }
+        .blob-2 { bottom: 10%; right: 5%; width: 400px; height: 400px; background: purple; }
+
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.05em;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(to right, var(--accent), #34d399);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            min-height: 1.5em; /* Prevent layout shift */
+        }
+
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+            color: var(--accent);
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 9999px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid #444;
+            color: var(--text-white);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: var(--text-gray);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 10px); }
+        }
+
+        /* --- Section Headers --- */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+            display: inline-block;
+            border-bottom: 4px solid var(--accent);
+            padding-bottom: 8px;
+        }
+
+        /* --- About Section --- */
+        .bg-dark { background-color: var(--bg-color); }
+        
+        .about-card {
+            background: rgba(23, 23, 23, 0.7);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .avatar {
+            width: 128px;
+            height: 128px;
+            flex-shrink: 0; /* Prevents squishing on Chrome */
+            background-color: #262626;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .about-content ul li {
+            margin-bottom: 0.5rem;
+            color: var(--text-gray);
+        }
+        
+        .about-content ul li i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        /* --- Skills Section --- */
+        .bg-dim { background-color: rgba(0,0,0,0.5); }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.3);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: #262626;
+            color: #34d399;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* --- Projects Section --- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            height: 100%; /* Ensure uniform height */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .project-icon-large {
+            font-size: 2.5rem;
+            color: #444;
+            transition: color 0.3s;
+        }
+        
+        .project-card:hover .project-icon-large {
+            color: var(--accent); /* Changes color on hover */
+        }
+        
+        /* Specific hover colors based on class */
+        .telegram-hover:hover .project-icon-large { color: #60a5fa; } 
+        .web-hover:hover .project-icon-large { color: #4ade80; }
+        .discord-hover:hover .project-icon-large { color: #818cf8; }
+        .ai-hover:hover .project-icon-large { color: #f472b6; }
+
+        .project-description {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            flex-grow: 1; /* Pushes buttons to bottom */
+        }
+
+        .project-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 8px 16px;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            color: white;
+            background-color: #374151;
+            transition: background 0.2s;
+        }
+
+        .project-btn:hover { background-color: #4b5563; }
+        .btn-blue { background-color: #2563eb; }
+        .btn-blue:hover { background-color: #1d4ed8; }
+
+        /* --- Footer --- */
+        footer {
+            background-color: black;
+            border-top: 1px solid #1f2937;
+            padding: 4rem 1rem 2rem 1rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            color: var(--text-gray);
+            transition: transform 0.2s, color 0.2s;
+        }
+
+        .social-icon:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .quote-container {
+            position: relative;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .quote-icon {
+            font-size: 4rem;
+            color: rgba(16, 185, 129, 0.2);
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.5; }
+        }
+
+        .quote-text {
+            position: relative;
+            z-index: 1;
+            font-family: serif;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--text-gray);
+        }
+
+        /* --- Media Queries (Responsiveness) --- */
+        @media (min-width: 768px) {
+            .nav-links { display: block; }
+            .mobile-menu-btn { display: none; }
+            .mobile-menu { display: none !important; } /* Force hide on desktop */
+            
+            .hero-title { font-size: 4.5rem; }
+            
+            .about-card { 
+                flex-direction: row; 
+                text-align: left;
+                padding: 3rem;
+            }
+            .avatar { margin: 0; }
+
+            .grid-3 { grid-template-columns: repeat(3, 1fr); }
+            .grid-2 { grid-template-columns: repeat(2, 1fr); }
+            
+            /* Removed full-width logic for better 2x2 grid */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">&lt;BakaHatake/&gt;</div>
+            
+            <!-- Desktop Menu -->
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <!-- Mobile Hamburger -->
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#about" onclick="toggleMenu()">About</a>
+            <a href="#skills" onclick="toggleMenu()">Skills</a>
+            <a href="#projects" onclick="toggleMenu()">Projects</a>
+            <a href="#contact" onclick="toggleMenu()">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Blobs -->
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+
+        <div class="container">
+            <h1 class="hero-title">
+                Hi, I'm <span class="gradient-text">Anush</span>
+            </h1>
+            <p class="hero-subtitle">
+                I am <span id="typing-text" class="typing-cursor text-accent"></span>
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="#projects" class="btn btn-primary">View Work</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+            </div>
+            
+            <div class="about-card">
+                <div class="avatar">
+                    <i class="fas fa-user-astronaut"></i> 
+                </div>
+                <div class="about-content text-center md:text-left">
+                    <p style="margin-bottom: 1rem; color: var(--text-gray); font-size: 1.125rem;">
+                        I'm a developer currently studying <span style="color:white; font-weight:600;">AI/ML</span> and passionate about learning new technologies. 
+                        My focus is on creating software that merges creativity with logic.
+                    </p>
+                    <ul>
+                        <li><i class="fas fa-graduation-cap"></i> Focused on AI/ML studies</li>
+                        <li><i class="fas fa-code"></i> Interested in Open Source & Creative Coding</li>
+                        <li><i class="fas fa-seedling"></i> Always exploring new stacks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-dim">
+        <div class="container">
+            <div class="section-header">
+                <h2>Skills & Tools</h2>
+            </div>
+            
+            <div class="grid-3">
+                <!-- Programming -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-terminal"></i></div>
+                    <h3 style="margin-bottom: 1rem;">Programming</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Node.js</span>
+                    </div>
+                </div>
+
+                <!-- Database -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-database"></i></div>
+                    <h3 style="margin-bottom: 1rem;">DBMS</h3>
+                    <div class="skill-tags">
+                        <span class="tag">SQLite</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">PyMongo</span>
+                        <span class="tag">Mongoose</span>
+                    </div>
+                </div>
+
+                <!-- Web Dev -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3 style="margin-bottom: 1rem;">Web Development</h3>
+                    <div class="skill-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JS</span>
+                        <span class="tag">Express</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section bg-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2>Projects</h2>
+            </div>
+            
+            <div class="grid-2">
+                <!-- Project 1: AI Interior Design (New) -->
+                <div class="project-card ai-hover">
+                    <div class="project-header">
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">AI Interior Design</h3>
+                            <p class="text-gray" style="font-size: 0.875rem;">Backend & DB Architecture</p>
+                        </div>
+                        <i class="fas fa-couch project-icon-large"></i>
+                    </div>
+                    <p class="project-description">
+                        A comprehensive AI platform to upload room photos, detect layouts, and suggest furniture in 2D/3D.
+                    </p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">Three.js</span>
+                    </div>
+                    <div class="flex" style="gap: 1rem;">
+                        <span class="project-btn" style="cursor: default; opacity: 0.8;">
+                            <i class="fas fa-code-branch"></i> In Development
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Project 2: Bots -->
+                <div class="project-card telegram-hover">
+                    <div class="project-header">
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Telegram Bots</h3>
+                            <p class="text-gray" style="font-size: 0.875rem;">Automation and Utility</p>
+                        </div>
+                        <i class="fab fa-telegram project-icon-large"></i>
+                    </div>
+                    <p class="project-description">Custom bots built for Telegram to handle various automated tasks.</p>
+                    <div class="flex gap-4">
+                        <a href="https://t.me/Baka7_bot?start" target="_blank" class="project-btn btn-blue">
+                            <i class="fas fa-robot"></i> Baka Bot
+                        </a>
+                        <a href="https://t.me/smoe7_bot?start" target="_blank" class="project-btn">
+                            <i class="fas fa-robot"></i> Some Bot
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Websites -->
+                <div class="project-card web-hover">
+                    <div class="project-header">
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Static Websites</h3>
+                            <p class="text-gray" style="font-size: 0.875rem;">Frontend Development</p>
+                        </div>
+                        <i class="fas fa-globe project-icon-large"></i>
+                    </div>
+                    <p class="project-description">Responsive static websites deployed on Vercel.</p>
+                    <div class="flex" style="flex-wrap: wrap; gap: 1rem;">
+                        <a href="https://idkbruh-eta.vercel.app/" target="_blank" class="project-btn">
+                            <i class="fas fa-external-link-alt"></i> Demon Slayer
+                        </a>
+                        <a href="https://lets-c.vercel.app/html/todo.html" target="_blank" class="project-btn">
+                            <i class="fas fa-external-link-alt"></i> Letsc
+                        </a>
+                        <a href="https://rwd-eight.vercel.app/html/landing.html" target="_blank" class="project-btn">
+                            <i class="fas fa-external-link-alt"></i> Canteeb Web
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4: Discord (Refitted) -->
+                <div class="project-card discord-hover">
+                    <div class="project-header">
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Discord Projects</h3>
+                            <p class="text-gray" style="font-size: 0.875rem;">Community Tools</p>
+                        </div>
+                        <i class="fab fa-discord project-icon-large"></i>
+                    </div>
+                    <p class="project-description">Currently under construction. Big things coming soon.</p>
+                    <div style="padding: 0.5rem 1rem; display:inline-block; background: rgba(234, 179, 8, 0.1); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.2); border-radius: 999px; font-size: 0.875rem;" class="mono">
+                        <i class="fas fa-hard-hat" style="margin-right: 0.5rem;"></i>Work in Progress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact">
+        <div class="container">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem;">Get In Touch</h2>
+            <div class="social-links">
+                <a href="https://github.com/BakaHatake" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="https://t.me/Anushhatake" target="_blank" class="social-icon"><i class="fab fa-telegram"></i></a>
+                <a href="https://discordapp.com/users/1277636164559306816" target="_blank" class="social-icon"><i class="fab fa-discord"></i></a>
+            </div>
+            
+            <div class="quote-container">
+                <i class="fas fa-leaf quote-icon"></i>
+                <blockquote class="quote-text">
+                    “Fallen leaves Adorn my night 🍂🍃.”
+                </blockquote>
+            </div>
+
+            <p style="color: #4b5563; font-size: 0.875rem; margin-top: 2rem;">
+                © 2024 BakaHatake. Built with HTML, CSS & Coffee.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle logic
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            // Toggle the 'active' class which controls display: block/none in CSS
+            menu.classList.toggle('active');
+        }
+
+        // Typing Effect logic
+        const textElement = document.getElementById('typing-text');
+        const phrases = ['focused on AI/ML.', 'a Developer.', 'exploring new stacks.'];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50;
+            } else {
+                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        document.addEventListener('DOMContentLoaded', type);
+    </script>
+</body>
+</html>
