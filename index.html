@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BakaHatake | AI/ML Developer</title>
-    <!-- Font Awesome for Icons -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
+    
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     
     <style>
-        /* --- CSS Variables --- */
+        
         :root {
             --bg-color: #0a0a0a;
             --card-bg: #171717;
-            --accent: #10b981; /* Emerald Green */
+            --accent: #10b981; 
             --accent-hover: #059669;
             --text-white: #ffffff;
             --text-gray: #a3a3a3;
@@ -22,7 +22,7 @@
             --nav-glass: rgba(23, 23, 23, 0.7);
         }
 
-        /* --- Reset & Base Styles --- */
+        
         * {
             margin: 0;
             padding: 0;
@@ -51,7 +51,7 @@
             list-style: none;
         }
 
-        /* --- Typography --- */
+        
         h1, h2, h3 {
             font-weight: 700;
         }
@@ -60,7 +60,7 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* --- Custom Scrollbar --- */
+        
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -75,7 +75,7 @@
             background: var(--accent);
         }
 
-        /* --- Layout Utilities --- */
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -90,7 +90,7 @@
         .text-accent { color: var(--accent); }
         .text-gray { color: var(--text-gray); }
         
-        /* Flexbox Utilities */
+        
         .flex { display: flex; }
         .flex-col { flex-direction: column; }
         .items-center { align-items: center; }
@@ -100,7 +100,7 @@
         .gap-4 { gap: 1rem; }
         .gap-8 { gap: 2rem; }
 
-        /* --- Navigation --- */
+        
         .navbar {
             position: fixed;
             top: 0;
@@ -131,7 +131,7 @@
         }
 
         .nav-links {
-            display: none; /* Hidden on mobile by default */
+            display: none; 
         }
 
         .nav-links a {
@@ -153,7 +153,7 @@
             display: block;
         }
 
-        /* Mobile Menu Dropdown */
+        
         .mobile-menu {
             display: none;
             background-color: var(--card-bg);
@@ -176,7 +176,7 @@
             color: var(--accent);
         }
 
-        /* --- Hero Section --- */
+        
         .hero {
             height: 100vh;
             display: flex;
@@ -187,7 +187,7 @@
             text-align: center;
         }
 
-        /* Decorative Blobs */
+        
         .blob {
             position: absolute;
             border-radius: 50%;
@@ -216,7 +216,7 @@
             color: var(--text-gray);
             margin-bottom: 2rem;
             font-family: 'JetBrains Mono', monospace;
-            min-height: 1.5em; /* Prevent layout shift */
+            min-height: 1.5em; 
         }
 
         .typing-cursor::after {
@@ -227,7 +227,7 @@
 
         @keyframes blink { 50% { opacity: 0; } }
 
-        /* Buttons */
+        
         .btn {
             display: inline-block;
             padding: 12px 32px;
@@ -272,7 +272,7 @@
             50% { transform: translate(-50%, 10px); }
         }
 
-        /* --- Section Headers --- */
+        
         .section-header {
             text-align: center;
             margin-bottom: 3rem;
@@ -285,7 +285,7 @@
             padding-bottom: 8px;
         }
 
-        /* --- About Section --- */
+        
         .bg-dark { background-color: var(--bg-color); }
         
         .about-card {
@@ -304,7 +304,7 @@
         .avatar {
             width: 128px;
             height: 128px;
-            flex-shrink: 0; /* Prevents squishing on Chrome */
+            flex-shrink: 0; 
             background-color: #262626;
             border-radius: 50%;
             display: flex;
@@ -325,7 +325,7 @@
             color: var(--accent);
         }
 
-        /* --- Skills Section --- */
+        
         .bg-dim { background-color: rgba(0,0,0,0.5); }
 
         .grid-3 {
@@ -369,7 +369,7 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* --- Projects Section --- */
+    
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr;
@@ -384,7 +384,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            height: 100%; /* Ensure uniform height */
+            height: 100%; 
             display: flex;
             flex-direction: column;
         }
@@ -407,10 +407,10 @@
         }
         
         .project-card:hover .project-icon-large {
-            color: var(--accent); /* Changes color on hover */
+            color: var(--accent); 
         }
         
-        /* Specific hover colors based on class */
+        
         .telegram-hover:hover .project-icon-large { color: #60a5fa; } 
         .web-hover:hover .project-icon-large { color: #4ade80; }
         .discord-hover:hover .project-icon-large { color: #818cf8; }
@@ -419,7 +419,7 @@
         .project-description {
             color: var(--text-gray);
             margin-bottom: 1.5rem;
-            flex-grow: 1; /* Pushes buttons to bottom */
+            flex-grow: 1; 
         }
 
         .project-btn {
@@ -438,7 +438,7 @@
         .btn-blue { background-color: #2563eb; }
         .btn-blue:hover { background-color: #1d4ed8; }
 
-        /* --- Footer --- */
+        
         footer {
             background-color: black;
             border-top: 1px solid #1f2937;
@@ -494,11 +494,11 @@
             color: var(--text-gray);
         }
 
-        /* --- Media Queries (Responsiveness) --- */
+        
         @media (min-width: 768px) {
             .nav-links { display: block; }
             .mobile-menu-btn { display: none; }
-            .mobile-menu { display: none !important; } /* Force hide on desktop */
+            .mobile-menu { display: none !important; } 
             
             .hero-title { font-size: 4.5rem; }
             
@@ -512,18 +512,18 @@
             .grid-3 { grid-template-columns: repeat(3, 1fr); }
             .grid-2 { grid-template-columns: repeat(2, 1fr); }
             
-            /* Removed full-width logic for better 2x2 grid */
+            
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
+    
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">&lt;BakaHatake/&gt;</div>
             
-            <!-- Desktop Menu -->
+            
             <div class="nav-links">
                 <a href="#about">About</a>
                 <a href="#skills">Skills</a>
@@ -531,13 +531,13 @@
                 <a href="#contact">Contact</a>
             </div>
 
-            <!-- Mobile Hamburger -->
+            
             <button class="mobile-menu-btn" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
 
-        <!-- Mobile Menu Dropdown -->
+        
         <div class="mobile-menu" id="mobile-menu">
             <a href="#about" onclick="toggleMenu()">About</a>
             <a href="#skills" onclick="toggleMenu()">Skills</a>
@@ -546,9 +546,9 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+
     <section class="hero">
-        <!-- Blobs -->
+        
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
 
@@ -565,13 +565,13 @@
             </div>
         </div>
         
-        <!-- Scroll indicator -->
+        
         <div class="scroll-indicator">
             <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
-    <!-- About Section -->
+    
     <section id="about" class="section bg-dark">
         <div class="container">
             <div class="section-header">
@@ -597,7 +597,7 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
+    
     <section id="skills" class="section bg-dim">
         <div class="container">
             <div class="section-header">
@@ -605,7 +605,7 @@
             </div>
             
             <div class="grid-3">
-                <!-- Programming -->
+                
                 <div class="skill-card">
                     <div class="skill-icon"><i class="fas fa-terminal"></i></div>
                     <h3 style="margin-bottom: 1rem;">Programming</h3>
@@ -615,7 +615,7 @@
                     </div>
                 </div>
 
-                <!-- Database -->
+                
                 <div class="skill-card">
                     <div class="skill-icon"><i class="fas fa-database"></i></div>
                     <h3 style="margin-bottom: 1rem;">DBMS</h3>
@@ -627,7 +627,7 @@
                     </div>
                 </div>
 
-                <!-- Web Dev -->
+                
                 <div class="skill-card">
                     <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
                     <h3 style="margin-bottom: 1rem;">Web Development</h3>
@@ -642,7 +642,7 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+    
     <section id="projects" class="section bg-dark">
         <div class="container">
             <div class="section-header">
@@ -650,7 +650,7 @@
             </div>
             
             <div class="grid-2">
-                <!-- Project 1: AI Interior Design (New) -->
+                
                 <div class="project-card ai-hover">
                     <div class="project-header">
                         <div>
@@ -675,7 +675,7 @@
                     </div>
                 </div>
 
-                <!-- Project 2: Bots -->
+                
                 <div class="project-card telegram-hover">
                     <div class="project-header">
                         <div>
@@ -695,7 +695,7 @@
                     </div>
                 </div>
 
-                <!-- Project 3: Websites -->
+                
                 <div class="project-card web-hover">
                     <div class="project-header">
                         <div>
@@ -718,7 +718,7 @@
                     </div>
                 </div>
 
-                <!-- Project 4: Discord (Refitted) -->
+                
                 <div class="project-card discord-hover">
                     <div class="project-header">
                         <div>
@@ -736,7 +736,7 @@
         </div>
     </section>
 
-    <!-- Footer / Contact -->
+
     <footer id="contact">
         <div class="container">
             <h2 style="font-size: 2rem; margin-bottom: 2rem;">Get In Touch</h2>
@@ -760,14 +760,14 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle logic
+        
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
-            // Toggle the 'active' class which controls display: block/none in CSS
+            
             menu.classList.toggle('active');
         }
 
-        // Typing Effect logic
+        
         const textElement = document.getElementById('typing-text');
         const phrases = ['focused on AI/ML.', 'a Developer.', 'exploring new stacks.'];
         let phraseIndex = 0;
