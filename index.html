@@ -244,11 +244,29 @@
         .social-icon:hover { color: white; transform: scale(1.1); }
         .quote-container { position: relative; padding: 2rem 0; margin-bottom: 2rem; }
         .quote-icon {
-            font-size: 4rem; color: rgba(16, 185, 129, 0.2);
-            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            animation: pulse 2s infinite;
+            font-size: 4rem;
+            color: rgba(16, 185, 129, 0.4); 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            animation: leaf-glow 3s infinite ease-in-out;
         }
-        @keyframes pulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.5; } }
+        
+        @keyframes leaf-glow {
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: translate(-50%, -50%) scale(1);
+                text-shadow: 0 0 0px rgba(16, 185, 129, 0);
+            }
+            50% { 
+                opacity: 1; 
+                transform: translate(-50%, -50%) scale(1);
+                text-shadow: 0 0 30px rgba(16, 185, 129, 0.8);
+            }
+        }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 0.5; } }
         .quote-text { position: relative; z-index: 1; font-family: serif; font-style: italic; font-size: 1.25rem; color: var(--text-gray); }
 
         @media (min-width: 768px) {
