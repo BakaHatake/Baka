@@ -121,6 +121,20 @@
             gap: 2rem;
         }
 
+        .grid-spanned {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        @media (min-width: 900px) {
+            .grid-spanned {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         .clickable {
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
@@ -522,6 +536,10 @@
             transition: all 0.3s ease;
             position: relative;
             height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .skill-card:not(.featured-skill):hover {
@@ -545,6 +563,8 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
+            justify-content: center;
+            margin-top: auto;
         }
 
         .featured-skill .skill-tags {
@@ -553,7 +573,7 @@
         }
 
         .tag {
-            background-color: #262626;
+            background-color: transparent;
             color: #34d399;
             padding: 4px 12px;
             border-radius: 9999px;
@@ -564,7 +584,7 @@
         }
 
         .skill-card:hover .tag {
-            background-color: #333;
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
         .tag.highlight {
@@ -654,6 +674,88 @@
             color: #a855f7;
             transform: scale(1.2);
             filter: drop-shadow(0 0 10px #a855f7);
+        }
+
+        /* Iframe preview box wrapper */
+        .preview-box {
+            position: relative;
+            width: 100%;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #111;
+            display: block;
+            margin-bottom: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .preview-box-small {
+            height: 160px;
+            /* Firm height for Static Sites */
+        }
+
+        .preview-box.large {
+            height: 350px;
+            /* Firm height for Web Apps */
+        }
+
+        .preview-box iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 400%;
+            height: 400%;
+            transform: scale(0.25);
+            transform-origin: 0 0;
+            border: none;
+            pointer-events: none;
+            background: #111;
+        }
+
+        .dsa-hover:hover {
+            border-color: #f59e0b;
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.2);
+        }
+
+        .dsa-hover:hover .project-icon-large {
+            color: #f59e0b;
+            transform: translateY(-5px);
+        }
+
+        .website-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .preview-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 10;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .preview-box:hover {
+            border-color: #4ade80;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(74, 222, 128, 0.2);
+        }
+
+        .preview-box:hover .preview-overlay {
+            opacity: 1;
         }
 
         .project-description {
@@ -1104,9 +1206,9 @@
                     <div class="skill-icon"><i class="fas fa-database"></i></div>
                     <h3 style="margin-bottom: 1rem;">Database</h3>
                     <div class="skill-tags">
-                        <span class="tag static-badge">MongoDB</span>
-                        <span class="tag static-badge">SQLite</span>
-                        <span class="tag static-badge">Mongoose</span>
+                        <span class="tag highlight">MongoDB</span>
+                        <span class="tag highlight">SQLite</span>
+                        <span class="tag highlight">Mongoose</span>
                     </div>
                 </div>
 
@@ -1114,10 +1216,10 @@
                     <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
                     <h3 style="margin-bottom: 1rem;">Web Development</h3>
                     <div class="skill-tags">
-                        <span class="tag static-badge">HTML</span>
-                        <span class="tag static-badge">CSS</span>
-                        <span class="tag static-badge">Node.js</span>
-                        <span class="tag static-badge">Express</span>
+                        <span class="tag highlight">Node.js</span>
+                        <span class="tag highlight">Express</span>
+                        <span class="tag highlight">Next.js</span>
+                        <span class="tag highlight">Tailwind CSS</span>
                     </div>
                 </div>
 
@@ -1125,8 +1227,9 @@
                     <div class="skill-icon"><i class="fas fa-tools"></i></div>
                     <h3 style="margin-bottom: 1rem;">Other Tools</h3>
                     <div class="skill-tags">
-                        <span class="tag static-badge">Git</span>
-                        <span class="tag static-badge">Vercel</span>
+                        <span class="tag highlight">Git</span>
+                        <span class="tag highlight">Vercel</span>
+                        <span class="tag highlight">Firebase</span>
                     </div>
                 </div>
 
@@ -1171,10 +1274,10 @@
                         2D/3D.
                     </p>
                     <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
-                        <span class="tag static-badge">FastAPI</span>
-                        <span class="tag static-badge">MongoDB</span>
-                        <span class="tag static-badge">PyTorch</span>
-                        <span class="tag static-badge">Three.js</span>
+                        <span class="tag highlight">FastAPI</span>
+                        <span class="tag highlight">MongoDB</span>
+                        <span class="tag highlight">PyTorch</span>
+                        <span class="tag highlight">Three.js</span>
                     </div>
                     <div class="flex" style="gap: 1rem;">
                         <span class="project-btn static-badge"
@@ -1202,74 +1305,174 @@
                         </a>
                     </div>
                 </div>
+            </div>
 
-                <div class="project-card web-hover reveal">
+            <div class="section-header reveal" style="margin-top: 5rem;">
+                <h2>Static Websites</h2>
+            </div>
+
+            <div class="grid-2">
+                <!-- Canteeb Preview -->
+                <div class="project-card web-hover reveal" style="flex-direction: column;">
                     <div class="project-header">
                         <div>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Static Websites</h3>
-                            <p class="text-gray" style="font-size: 0.875rem;">Frontend Development</p>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Canteeb Web</h3>
+                            <p class="text-gray" style="font-size: 0.875rem;">Static Website</p>
                         </div>
                         <i class="fas fa-globe project-icon-large"></i>
                     </div>
-                    <p class="project-description">Responsive static websites deployed on Vercel.</p>
-                    <div class="flex" style="flex-wrap: wrap; gap: 1rem;">
 
-                        <a href="https://lets-c.vercel.app/html/todo.html" target="_blank"
-                            class="project-btn clickable">
-                            <i class="fas fa-external-link-alt"></i> Letsc
-                        </a>
-                        <a href="https://rwd-tau.vercel.app/" target="_blank" class="project-btn clickable">
-                            <i class="fas fa-external-link-alt"></i> Canteeb Web
-                        </a>
-                        <a href="https://to2do.vercel.app/" target="_blank" class="project-btn clickable">
-                            <i class="fas fa-external-link-alt"></i> To Do Web
-                        </a>
-                    </div>
-                </div>
+                    <a href="https://rwd-tau.vercel.app/" target="_blank" class="preview-box preview-box-small">
+                        <iframe src="https://rwd-tau.vercel.app/" tabindex="-1"></iframe>
+                    </a>
 
-                <div class="project-card discord-hover reveal">
-                    <div class="project-header">
-                        <div>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Discord Projects</h3>
-                            <p class="text-gray" style="font-size: 0.875rem;">Community Tools</p>
-                        </div>
-                        <i class="fab fa-discord project-icon-large"></i>
-                    </div>
-                    <p class="project-description">Currently under construction. Big things coming soon.</p>
-                    <div style="padding: 0.5rem 1rem; display:inline-block; background: rgba(234, 179, 8, 0.1); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.2); border-radius: 999px; font-size: 0.875rem; cursor:default;"
-                        class="mono static-badge">
-                        <i class="fas fa-hard-hat" style="margin-right: 0.5rem;"></i>Work in Progress
-                    </div>
-                </div>
-
-                <div class="project-card music-hover reveal">
-                    <div class="project-header">
-                        <div>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Custom Music Platform</h3>
-                            <p class="text-gray" style="font-size: 0.875rem;">Modern Web Audio App</p>
-                        </div>
-                        <i class="fas fa-headphones-simple project-icon-large"></i>
-                    </div>
-                    <p class="project-description">
-                        Building a personalized web-based music player using Next.js for server-side rendering and a
-                        fluid user experience.
+                    <p class="project-description mb-2 flex-grow">
+                        A modern, fully responsive layout built out with frontend tools focusing on semantic structure
+                        and cross-browser styling.
                     </p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
-                        <span class="tag static-badge">Next.js</span>
-                        <span class="tag static-badge">React</span>
-                        <span class="tag static-badge">Web Audio API</span>
+
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; margin-bottom: 1rem;">
+                        <span class="tag highlight">MERN Stack</span>
+                        <span class="tag highlight">Vercel + Railway</span>
                     </div>
-                    <div class="flex" style="gap: 1rem;">
-                        <a href="https://anushdev.in" target="_blank" class="project-btn clickable">
-                            <i class="fas fa-external-link-alt"></i> Preview
+
+                    <div class="flex" style="flex-wrap: wrap; gap: 1rem;">
+                        <a href="https://rwd-tau.vercel.app/" target="_blank" class="project-btn btn-blue clickable">
+                            <i class="fas fa-external-link-alt"></i> View Live
                         </a>
-                        <span class="project-btn live-pulse">
-                            <i class="far fa-calendar-alt" style="margin-right: 0.5rem; font-size: 0.8rem;"></i>Live by
-                            End of 4th Sem
-                        </span>
                     </div>
                 </div>
 
+                <!-- ToDo Preview -->
+                <div class="project-card web-hover reveal" style="flex-direction: column;">
+                    <div class="project-header">
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">To-Do Matrix</h3>
+                            <p class="text-gray" style="font-size: 0.875rem;">Static Website</p>
+                        </div>
+                        <i class="fas fa-check-square project-icon-large"></i>
+                    </div>
+
+                    <a href="https://to2do.vercel.app/" target="_blank"
+                        class="preview-box preview-box-small border border-border-dark">
+                        <iframe src="https://to2do.vercel.app/" tabindex="-1"></iframe>
+                    </a>
+
+                    <p class="project-description mb-2 flex-grow">
+                        A clean, minimal, functional web application for task tracking utilizing pure Javascript DOM
+                        manipulation.
+                    </p>
+
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; margin-bottom: 1rem;">
+                        <span class="tag highlight">MERN Stack</span>
+                        <span class="tag highlight">Vercel + Replit</span>
+                    </div>
+
+                    <div class="flex" style="flex-wrap: wrap; gap: 1rem;">
+                        <a href="https://to2do.vercel.app/" target="_blank" class="project-btn btn-blue clickable">
+                            <i class="fas fa-external-link-alt"></i> View Live
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="section-header reveal" style="margin-top: 5rem;">
+                <h2>Web Apps</h2>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 4rem;">
+                <!-- Web Apps Area: Muryo Model -->
+                <div class="project-card music-hover reveal grid-spanned"
+                    style="padding: 2.5rem; border-color: rgba(168, 85, 247, 0.4); box-shadow: 0 0 30px rgba(168, 85, 247, 0.1);">
+                    <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div class="project-header">
+                            <div>
+                                <h3 style="font-size: 2rem; margin-bottom: 0.5rem; color: #d8b4fe;">Muryō AI Model /
+                                    Custom Music</h3>
+                                <p class="text-gray" style="font-size: 1rem;">Full Stack AI Generation Platform</p>
+                            </div>
+                            <i class="fas fa-brain project-icon-large" style="color: #a855f7;"></i>
+                        </div>
+
+                        <p class="project-description mb-4" style="font-size: 1.05rem;">
+                            A highly complex and interactive full stack application serving AI models and personalized
+                            algorithmic music experiences. It leverages dense neural networks for generative audio and
+                            provides a seamless UI for end users to command it in real-time.
+                        </p>
+
+                        <div
+                            style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; margin-top: auto;">
+                            <span class="tag highlight">Next.js</span>
+                            <span class="tag highlight">Express</span>
+                            <span class="tag highlight">Tailwind CSS</span>
+                            <span class="tag highlight">MongoDB</span>
+                            <span class="tag highlight">PyTorch</span>
+                            <span class="tag highlight">Phaser.js</span>
+                            <span class="tag highlight">Vercel + Render</span>
+                        </div>
+                        <div class="flex" style="gap: 1rem; align-items: center;">
+                            <a href="https://anushdev.in" target="_blank" class="project-btn btn-primary clickable"
+                                style="background-color: #9333ea;">
+                                <i class="fas fa-external-link-alt"></i> Visit App
+                            </a>
+                            <span class="project-btn live-pulse" style="cursor: default;">
+                                <i class="far fa-calendar-alt" style="margin-right: 0.5rem; font-size: 0.8rem;"></i>Live
+                                by End of 4th Sem
+                            </span>
+                        </div>
+                    </div>
+
+                    <div style="width: 100%; padding-top: 1rem;">
+                        <a href="https://anushdev.in/" target="_blank" class="preview-box large"
+                            style="margin: 0; box-shadow: 0 10px 30px -10px rgba(168, 85, 247, 0.3); border-color: #a855f7;">
+                            <iframe src="https://anushdev.in/" tabindex="-1"></iframe>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Web Apps Area: DSA Tracker -->
+                <div class="project-card dsa-hover reveal grid-spanned"
+                    style="padding: 2.5rem; border-color: rgba(245, 158, 11, 0.4); box-shadow: 0 0 30px rgba(245, 158, 11, 0.1);">
+                    <div style="width: 100%; padding-top: 1rem; order: 2;">
+                        <a href="https://bakadsa.vercel.app/" target="_blank" class="preview-box large"
+                            style="margin: 0; box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.3); border-color: #f59e0b;">
+                            <iframe src="https://bakadsa.vercel.app/" tabindex="-1"></iframe>
+                        </a>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; justify-content: space-between; order: 1;">
+                        <div class="project-header">
+                            <div>
+                                <h3 style="font-size: 2rem; margin-bottom: 0.5rem; color: #fcd34d;">DSA Tracker</h3>
+                                <p class="text-gray" style="font-size: 1rem;">Data Structures Productivity Suite</p>
+                            </div>
+                            <i class="fas fa-code project-icon-large" style="color: #f59e0b;"></i>
+                        </div>
+
+                        <p class="project-description mb-4" style="font-size: 1.05rem;">
+                            A modern platform designed to revolutionize the way computer science students track their
+                            Data Structures and Algorithms progress. It is fully integrated with personal accounts via
+                            Firebase authentication and visually records LeetCode achievements.
+                        </p>
+                        <div
+                            style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; margin-top: auto;">
+                            <span class="tag highlight">Next.js</span>
+                            <span class="tag highlight">Tailwind CSS</span>
+                            <span class="tag highlight">Vercel + Firebase</span>
+                        </div>
+                        <div class="flex" style="gap: 1rem; align-items: center;">
+                            <a href="https://bakadsa.vercel.app/" target="_blank"
+                                class="project-btn btn-primary clickable" style="background-color: #d97706;">
+                                <i class="fas fa-external-link-alt"></i> Visita App
+                            </a>
+                            <span class="project-btn static-badge"
+                                style="background:none; border: 1px solid #333; cursor: default;">
+                                <i class="fas fa-rocket text-yellow-500"></i> Under Construction
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
