@@ -691,12 +691,10 @@
 
         .preview-box-small {
             height: 160px;
-            /* Firm height for Static Sites */
         }
 
         .preview-box.large {
-            height: 350px;
-            /* Firm height for Web Apps */
+            height: 210px;
         }
 
         .preview-box iframe {
@@ -1216,6 +1214,7 @@
                     <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
                     <h3 style="margin-bottom: 1rem;">Web Development</h3>
                     <div class="skill-tags">
+                        <span class="tag highlight">Typescript</span>
                         <span class="tag highlight">Node.js</span>
                         <span class="tag highlight">Express</span>
                         <span class="tag highlight">Next.js</span>
@@ -1257,52 +1256,99 @@
     <section id="projects" class="section bg-dark">
         <div class="container">
             <div class="section-header reveal">
-                <h2>Projects</h2>
+                <h2>Web Apps</h2>
             </div>
 
-            <div class="grid-2">
-                <div class="project-card ai-hover reveal">
-                    <div class="project-header">
-                        <div>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">AI Interior Design</h3>
-                            <p class="text-gray" style="font-size: 0.875rem;">Backend & DB Architecture</p>
+            <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+                <!-- Web Apps Area: Muryo Model -->
+                <div class="project-card music-hover reveal grid-spanned"
+                    style="padding: 1.5rem 2rem; max-width: 950px; margin: 0 auto; border-color: rgba(168, 85, 247, 0.4); box-shadow: 0 0 30px rgba(168, 85, 247, 0.1);">
+                    <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div class="project-header">
+                            <div>
+                                <h3 style="font-size: 2rem; margin-bottom: 0.5rem; color: #d8b4fe;">Muryō AI Model /
+                                    Custom Music</h3>
+                                <p class="text-gray" style="font-size: 1rem;">Full Stack AI Generation Platform</p>
+                            </div>
+                            <i class="fas fa-brain project-icon-large" style="color: #a855f7;"></i>
                         </div>
-                        <i class="fas fa-couch project-icon-large"></i>
+
+                        <p class="project-description mb-4" style="font-size: 1.05rem;">
+                            A highly complex and interactive full stack application serving AI models and personalized
+                            algorithmic music experiences. It leverages dense neural networks for generative audio and
+                            provides a seamless UI for end users to command it in real-time.
+                        </p>
+
+                        <div
+                            style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; margin-top: auto;">
+                            <span class="tag highlight">Next.js</span>
+                            <span class="tag highlight">Express</span>
+                            <span class="tag highlight">Tailwind CSS</span>
+                            <span class="tag highlight">MongoDB</span>
+                            <span class="tag highlight">PyTorch</span>
+                            <span class="tag highlight">Phaser.js</span>
+                            <span class="tag highlight">Vercel + Render</span>
+                        </div>
+                        <div class="flex" style="gap: 1rem; align-items: center;">
+                            <a href="https://anushdev.in" target="_blank" class="project-btn btn-primary clickable"
+                                style="background-color: #9333ea;">
+                                <i class="fas fa-external-link-alt"></i> Visit App
+                            </a>
+                            <span class="project-btn live-pulse" style="cursor: default;">
+                                <i class="far fa-calendar-alt" style="margin-right: 0.5rem; font-size: 0.8rem;"></i>Live
+                                by End of 4th Sem
+                            </span>
+                        </div>
                     </div>
-                    <p class="project-description">
-                        A comprehensive AI platform to upload room photos, detect layouts, and suggest furniture in
-                        2D/3D.
-                    </p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
-                        <span class="tag highlight">FastAPI</span>
-                        <span class="tag highlight">MongoDB</span>
-                        <span class="tag highlight">PyTorch</span>
-                        <span class="tag highlight">Three.js</span>
-                    </div>
-                    <div class="flex" style="gap: 1rem;">
-                        <span class="project-btn static-badge"
-                            style="background:none; border: 1px solid #333; cursor: default;">
-                            <i class="fas fa-code-branch"></i> In Development
-                        </span>
+
+                    <div style="width: 100%; padding-top: 1rem;">
+                        <a href="https://anushdev.in/" target="_blank" class="preview-box large"
+                            style="margin: 0; box-shadow: 0 10px 30px -10px rgba(168, 85, 247, 0.3); border-color: #a855f7;">
+                            <iframe src="https://anushdev.in/" tabindex="-1"></iframe>
+                        </a>
                     </div>
                 </div>
 
-                <div class="project-card telegram-hover reveal">
-                    <div class="project-header">
-                        <div>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Telegram Bots</h3>
-                            <p class="text-gray" style="font-size: 0.875rem;">Automation and Utility</p>
-                        </div>
-                        <i class="fab fa-telegram project-icon-large"></i>
+                <!-- Web Apps Area: DSA Tracker -->
+                <div class="project-card dsa-hover reveal grid-spanned"
+                    style="padding: 1.5rem 2rem; max-width: 950px; margin: 0 auto; border-color: rgba(245, 158, 11, 0.4); box-shadow: 0 0 30px rgba(245, 158, 11, 0.1);">
+                    <div style="width: 100%; padding-top: 1rem; order: 2;">
+                        <a href="https://bakadsa.vercel.app/" target="_blank" class="preview-box large"
+                            style="margin: 0; box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.3); border-color: #f59e0b;">
+                            <iframe src="https://bakadsa.vercel.app/" tabindex="-1"></iframe>
+                        </a>
                     </div>
-                    <p class="project-description">Custom bots built for Telegram to handle various automated tasks.</p>
-                    <div class="flex gap-4">
-                        <a href="https://t.me/Baka98_bot?start" target="_blank" class="project-btn btn-blue clickable">
-                            <i class="fas fa-robot"></i> Baka Bot
-                        </a>
-                        <a href="https://t.me/smoe7_bot?start" target="_blank" class="project-btn clickable">
-                            <i class="fas fa-robot"></i> Some Bot
-                        </a>
+
+                    <div style="display: flex; flex-direction: column; justify-content: space-between; order: 1;">
+                        <div class="project-header">
+                            <div>
+                                <h3 style="font-size: 2rem; margin-bottom: 0.5rem; color: #fcd34d;">DSA Tracker</h3>
+                                <p class="text-gray" style="font-size: 1rem;">Data Structures Productivity Suite</p>
+                            </div>
+                            <i class="fas fa-code project-icon-large" style="color: #f59e0b;"></i>
+                        </div>
+
+                        <p class="project-description mb-4" style="font-size: 1.05rem;">
+                            A modern platform designed to revolutionize the way computer science students track their
+                            Data Structures and Algorithms progress. It is fully integrated with personal accounts via
+                            Firebase authentication and visually records LeetCode achievements.
+                        </p>
+                        <div
+                            style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; margin-top: auto;">
+                            <span class="tag highlight">Next.js</span>
+                            <span class="tag highlight">Tailwind CSS</span>
+                            <span class="tag highlight">Vercel + Firebase</span>
+                        </div>
+                        <div class="flex" style="gap: 1rem; align-items: center;">
+                            <a href="https://bakadsa.vercel.app/" target="_blank"
+                                class="project-btn btn-primary clickable" style="background-color: #d97706;">
+                                <i class="fas fa-external-link-alt"></i> Visita App
+                            </a>
+                            <span class="project-btn static-badge"
+                                style="background:none; border: 1px solid #333; cursor: default;">
+                                <i class="fas fa-rocket text-yellow-500"></i> Under Construction
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1378,104 +1424,64 @@
             </div>
 
             <div class="section-header reveal" style="margin-top: 5rem;">
-                <h2>Web Apps</h2>
+                <h2>Telegram Bots</h2>
             </div>
 
-            <div style="display: flex; flex-direction: column; gap: 4rem;">
-                <!-- Web Apps Area: Muryo Model -->
-                <div class="project-card music-hover reveal grid-spanned"
-                    style="padding: 2.5rem; border-color: rgba(168, 85, 247, 0.4); box-shadow: 0 0 30px rgba(168, 85, 247, 0.1);">
-                    <div style="display: flex; flex-direction: column; justify-content: space-between;">
-                        <div class="project-header">
-                            <div>
-                                <h3 style="font-size: 2rem; margin-bottom: 0.5rem; color: #d8b4fe;">Muryō AI Model /
-                                    Custom Music</h3>
-                                <p class="text-gray" style="font-size: 1rem;">Full Stack AI Generation Platform</p>
-                            </div>
-                            <i class="fas fa-brain project-icon-large" style="color: #a855f7;"></i>
+            <div class="grid-2">
+                <div class="project-card telegram-hover reveal">
+                    <div class="project-header">
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Telegram Bots</h3>
+                            <p class="text-gray" style="font-size: 0.875rem;">Automation and Utility</p>
                         </div>
-
-                        <p class="project-description mb-4" style="font-size: 1.05rem;">
-                            A highly complex and interactive full stack application serving AI models and personalized
-                            algorithmic music experiences. It leverages dense neural networks for generative audio and
-                            provides a seamless UI for end users to command it in real-time.
-                        </p>
-
-                        <div
-                            style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; margin-top: auto;">
-                            <span class="tag highlight">Next.js</span>
-                            <span class="tag highlight">Express</span>
-                            <span class="tag highlight">Tailwind CSS</span>
-                            <span class="tag highlight">MongoDB</span>
-                            <span class="tag highlight">PyTorch</span>
-                            <span class="tag highlight">Phaser.js</span>
-                            <span class="tag highlight">Vercel + Render</span>
-                        </div>
-                        <div class="flex" style="gap: 1rem; align-items: center;">
-                            <a href="https://anushdev.in" target="_blank" class="project-btn btn-primary clickable"
-                                style="background-color: #9333ea;">
-                                <i class="fas fa-external-link-alt"></i> Visit App
-                            </a>
-                            <span class="project-btn live-pulse" style="cursor: default;">
-                                <i class="far fa-calendar-alt" style="margin-right: 0.5rem; font-size: 0.8rem;"></i>Live
-                                by End of 4th Sem
-                            </span>
-                        </div>
+                        <i class="fab fa-telegram project-icon-large"></i>
                     </div>
-
-                    <div style="width: 100%; padding-top: 1rem;">
-                        <a href="https://anushdev.in/" target="_blank" class="preview-box large"
-                            style="margin: 0; box-shadow: 0 10px 30px -10px rgba(168, 85, 247, 0.3); border-color: #a855f7;">
-                            <iframe src="https://anushdev.in/" tabindex="-1"></iframe>
+                    <p class="project-description">Custom bots built for Telegram to handle various automated tasks.</p>
+                    <div class="flex gap-4">
+                        <a href="https://t.me/Baka98_bot?start" target="_blank" class="project-btn btn-blue clickable">
+                            <i class="fas fa-robot"></i> Baka Bot
+                        </a>
+                        <a href="https://t.me/smoe7_bot?start" target="_blank" class="project-btn clickable">
+                            <i class="fas fa-robot"></i> Some Bot
                         </a>
                     </div>
                 </div>
+            </div>
 
-                <!-- Web Apps Area: DSA Tracker -->
-                <div class="project-card dsa-hover reveal grid-spanned"
-                    style="padding: 2.5rem; border-color: rgba(245, 158, 11, 0.4); box-shadow: 0 0 30px rgba(245, 158, 11, 0.1);">
-                    <div style="width: 100%; padding-top: 1rem; order: 2;">
-                        <a href="https://bakadsa.vercel.app/" target="_blank" class="preview-box large"
-                            style="margin: 0; box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.3); border-color: #f59e0b;">
-                            <iframe src="https://bakadsa.vercel.app/" tabindex="-1"></iframe>
-                        </a>
+            <div class="section-header reveal" style="margin-top: 5rem;">
+                <h2>AI Interior</h2>
+            </div>
+
+            <div class="grid-2">
+                <div class="project-card ai-hover reveal">
+                    <div class="project-header">
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">AI Interior Design</h3>
+                            <p class="text-gray" style="font-size: 0.875rem;">Backend & DB Architecture</p>
+                        </div>
+                        <i class="fas fa-couch project-icon-large"></i>
                     </div>
-
-                    <div style="display: flex; flex-direction: column; justify-content: space-between; order: 1;">
-                        <div class="project-header">
-                            <div>
-                                <h3 style="font-size: 2rem; margin-bottom: 0.5rem; color: #fcd34d;">DSA Tracker</h3>
-                                <p class="text-gray" style="font-size: 1rem;">Data Structures Productivity Suite</p>
-                            </div>
-                            <i class="fas fa-code project-icon-large" style="color: #f59e0b;"></i>
-                        </div>
-
-                        <p class="project-description mb-4" style="font-size: 1.05rem;">
-                            A modern platform designed to revolutionize the way computer science students track their
-                            Data Structures and Algorithms progress. It is fully integrated with personal accounts via
-                            Firebase authentication and visually records LeetCode achievements.
-                        </p>
-                        <div
-                            style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; margin-top: auto;">
-                            <span class="tag highlight">Next.js</span>
-                            <span class="tag highlight">Tailwind CSS</span>
-                            <span class="tag highlight">Vercel + Firebase</span>
-                        </div>
-                        <div class="flex" style="gap: 1rem; align-items: center;">
-                            <a href="https://bakadsa.vercel.app/" target="_blank"
-                                class="project-btn btn-primary clickable" style="background-color: #d97706;">
-                                <i class="fas fa-external-link-alt"></i> Visita App
-                            </a>
-                            <span class="project-btn static-badge"
-                                style="background:none; border: 1px solid #333; cursor: default;">
-                                <i class="fas fa-rocket text-yellow-500"></i> Under Construction
-                            </span>
-                        </div>
+                    <p class="project-description">
+                        A comprehensive AI platform to upload room photos, detect layouts, and suggest furniture in
+                        2D/3D.
+                    </p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                        <span class="tag highlight">FastAPI</span>
+                        <span class="tag highlight">MongoDB</span>
+                        <span class="tag highlight">PyTorch</span>
+                        <span class="tag highlight">Three.js</span>
+                    </div>
+                    <div class="flex" style="gap: 1rem;">
+                        <span class="project-btn static-badge"
+                            style="background:none; border: 1px solid #333; cursor: default;">
+                            <i class="fas fa-code-branch"></i> In Development
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <section id="gaming" class="section bg-dim">
         <div class="container">
